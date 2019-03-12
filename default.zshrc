@@ -55,7 +55,7 @@ ZSH_CUSTOM=$HOME/dotlou/zshrc-opinionated/zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=(git docker nvm kubectl)
+plugins+=(git docker nvm kubectl zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
