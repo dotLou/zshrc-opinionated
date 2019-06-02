@@ -7,7 +7,7 @@ Useful shell scripts and environment configurations
 The easiest way is to simply do:
 
 ```shell
-cd && git clone https://github.com/dotLou/zhsrc-opinionated.git && ln -s $HOME/dotLou/hsrc-opinionated/default.zshrc $HOME/.zshrc
+cd && git clone https://github.com/dotLou/zhsrc-opinionated.git && ln -s $HOME/dotLou/zshrc-opinionated/default.zshrc $HOME/.zshrc
 ```
 
 ### Custom plugins
