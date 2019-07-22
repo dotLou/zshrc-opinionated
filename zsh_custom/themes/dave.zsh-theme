@@ -14,7 +14,7 @@ function box_name {
 }
 
 function k8s_context {
-	if [ ! -z "command -v kubectl" ]; then
+	if [[ $(command -v kubectl) ]]; then
 		#local GEAR="⚙"
 		local GEAR="\u26F5"
 		echo -ne "$FG[239]${GEAR}$reset_color $FG[033]$(kubectl config current-context)$reset_color"

@@ -55,7 +55,7 @@ ZSH_CUSTOM=$HOME/dotlou/zshrc-opinionated/zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=(git docker nvm kubectl zsh-autosuggestions zsh-syntax-highlighting)
+plugins+=(git docker nvm zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,11 +118,13 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ $(command -v iterm2_set_user_var) ] && [ $(command -v kubectx) ]; then
   iterm2_print_user_vars() {
     # example usage in iterm2 badge: \(user.kubecontext):\(user.kubenamespace)
-    K8s_CONTEXT=$(kubectl config current-context)
-    K8s_NAMESPACE="$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${K8s_CONTEXT}\")].context.namespace}")" \
-      || exit_err "error getting current namespace"
-    iterm2_set_user_var kubecontext $K8s_CONTEXT
-    iterm2_set_user_var kubenamespace $K8s_NAMESPACE
+    if [[ $(command -v kubectl) ]]; then
+      K8s_CONTEXT=$(kubectl config current-context)
+      K8s_NAMESPACE="$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${K8s_CONTEXT}\")].context.namespace}")" \
+        || exit_err "error getting current namespace"
+      iterm2_set_user_var kubecontext $K8s_CONTEXT
+      iterm2_set_user_var kubenamespace $K8s_NAMESPACE
+    fi
   }
 fi
 
