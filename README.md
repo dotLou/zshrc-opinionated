@@ -7,7 +7,7 @@ Useful shell scripts and environment configurations
 The easiest way is to simply do:
 
 ```shell
-cd && git clone https://github.com/dotLou/zhsrc-opinionated.git && ln -s $HOME/dotLou/zshrc-opinionated/default.zshrc $HOME/.zshrc
+cd && mkdir dotlou && cd dotlou && git clone https://github.com/dotLou/zshrc-opinionated.git && ln -s $HOME/dotLou/zshrc-opinionated/default.zshrc $HOME/.zshrc
 ```
 
 ### Custom plugins
@@ -15,7 +15,7 @@ cd && git clone https://github.com/dotLou/zhsrc-opinionated.git && ln -s $HOME/d
 This package doesn't include any plugins pre-installed. To install your own, It's best to link back to the default plugins folder:
 
 ```shell
-ln -s $HOME/.oh-my-zsh/custom/plugins $HOME/zhsrc-opinionated/zsh_custom/plugins
+ln -s $HOME/.oh-my-zsh/custom/plugins $HOME/dotlou/zshrc-opinionated/zsh_custom/plugins
 ```
 
 #### nvm
@@ -48,8 +48,9 @@ http https://jsonplaceholder.typicode.com/users
 These things will be automatically enabled after they are installed and you `source ~/.zshrc` (when using `default.zshrc` as your `~/.zshrc` file).
 
 ```shell
-brew install zsh-syntax-highlighting
-brew install zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 brew install kubectl
 brew install kubernetes-helm
 brew install azure-cli
