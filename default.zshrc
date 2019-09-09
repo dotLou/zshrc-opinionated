@@ -7,7 +7,13 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="avit"
 # ZSH_THEME="pure"
-ZSH_THEME=${ZSH_THEME:="dave"}
+
+if [[ $(command -v starship) ]]; then
+  eval "$(starship init zsh)"
+else
+  ZSH_THEME=${ZSH_THEME:="dave"}
+fi
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,7 +61,7 @@ ZSH_CUSTOM=$HOME/dotlou/zshrc-opinionated/zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=(git docker nvm zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
+plugins+=(git docker nvm kubectl zsh-completions zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -151,6 +157,3 @@ fi
 if [[ $(command -v minishift) ]]; then
   eval $(minishift oc-env) || echo "no minishift running, oc command not setup"
 fi
-
-# For elastic charts dev, use local charts by default
-export LOCAL_CHARTS=true
