@@ -103,8 +103,8 @@ if [[ $(command -v helm) ]]; then
   source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
 fi
 
+autoload bashcompinit && bashcompinit
 if [[ $(command -v az) && -f "/usr/local/etc/bash_completion.d/az" ]]; then
-  autoload bashcompinit && bashcompinit
   source /usr/local/etc/bash_completion.d/az
 fi
 
