@@ -1,0 +1,21 @@
+format = """\
+  $username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_status\
+  $cmd_duration\
+  $custom\
+  $line_break\
+  $jobs\
+  $battery\
+  $time\
+  $character\
+  """
+
+[git_commit]
+disabled = false
+#commit_hash_length = 4
+
